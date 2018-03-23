@@ -39,9 +39,9 @@ public class SolenoidShift extends Command {
 			this.direction = this.directionSupplier.get();
 		
 		if(state == 0)
-			Robot.Shifter.openArm();		
+			Robot.Shifter.closeArm();		
 		if(state == 1)
-			Robot.Shifter.closeArm();
+			Robot.Shifter.openArm();
 		if (state == 3)
 			Robot.Shifter.firePiston();
 		if (state == 4)

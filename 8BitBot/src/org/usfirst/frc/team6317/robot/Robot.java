@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6317.robot;
 
 import org.usfirst.frc.team6317.robot.commands.*;
+import org.usfirst.frc.team6317.robot.sensors.SpatialPhidgetGyro;
 import org.usfirst.frc.team6317.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.CameraServer;
@@ -55,10 +56,10 @@ public class Robot extends IterativeRobot {
 		//makes the sendable chooser
 		autoChooser = new SendableChooser();
 		autoChooser.addDefault("Middle Start", new MiddleAutonomous());
-		autoChooser.addObject("Right Start", new RightAuto());
-		autoChooser.addObject("Left Start", new LeftAuto());
-		autoChooser.addObject("Left Scale", new LeftAutoScale());
-		autoChooser.addObject("Drift", new DriftFixing());
+		autoChooser.addObject("Right Baseline", new RightAuto());
+		autoChooser.addObject("Right Scale Switch Choose", new RightAutoScale());
+		autoChooser.addObject("Left Baseline", new LeftAuto());
+		autoChooser.addObject("Left Scale Switch Choose", new LeftAutoScale());
 		SmartDashboard.putData("Auto mode", autoChooser);
 	}
 
@@ -94,7 +95,6 @@ public class Robot extends IterativeRobot {
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		//starts the auto selected from auto chooser
 		autonomousCommand = (Command) autoChooser.getSelected();
-		autonomousCommand.start();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

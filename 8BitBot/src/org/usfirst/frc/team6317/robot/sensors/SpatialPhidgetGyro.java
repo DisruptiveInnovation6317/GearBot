@@ -12,17 +12,16 @@ public class SpatialPhidgetGyro implements SpatialDataListener {
 	private double[] integratedAxes;
 	private double lastTime;
 	
-	public SpatialPhidgetGyro(SpatialPhidget phidget) throws PhidgetException {
+	public SpatialPhidgetGyro(SpatialPhidget phidget) {
 		this.phidget = phidget;
-		if (this.phidget.isAttached())
-			this.init();
-		this.phidget.addAttachListener(e -> {
-			try {
+		try {
+			if (this.phidget.isAttached())
 				this.init();
-			} catch (PhidgetException e1) {
-				throw new RuntimeException(e1);
-			}
-		});
+		} catch (PhidgetException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		this.phidget.addAttachListener(e -> this.init());
 		this.phidget.addSpatialDataListener(this);
 	}
 	
@@ -59,6 +58,15 @@ public class SpatialPhidgetGyro implements SpatialDataListener {
 	public double getZHeading() {
 		return this.getHeading(2);
 	}
+	
+	public void zero() {
+		try {
+			this.phidget.zeroGyro();
+		} catch (PhidgetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void data(SpatialDataEvent event) {
@@ -78,9 +86,14 @@ public class SpatialPhidgetGyro implements SpatialDataListener {
 		}
 	}
 
-	private void init() throws PhidgetException {
-		gyroAxisCount = phidget.getGyroAxisCount();
-		integratedAxes = new double[gyroAxisCount];
-		lastTime = 0;
+	private void init() {
+		try {
+			gyroAxisCount = phidget.getGyroAxisCount();
+			integratedAxes = new double[gyroAxisCount];
+			lastTime = 0;
+		} catch (PhidgetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

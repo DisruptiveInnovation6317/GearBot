@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Joystick"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.buttons.JoystickButton"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Joystick.ButtonType"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.commands.TeleopCommand"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PowerDistributionPanel"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.SerialPort"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.SerialPort.Parity"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.SerialPort.StopBits"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
@@ -33,9 +27,7 @@
 <fullyQualifiedTypeName name="java.util.function.Function"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.Direction"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Encoder"/>
-<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Timer"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.Robot"/>
 <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
 <fullyQualifiedTypeName name="javafx.scene.Parent"/>
 <fullyQualifiedTypeName name="javafx.scene.Scene"/>
@@ -58,6 +50,14 @@
 <fullyQualifiedTypeName name="javafx.application.Platform"/>
 <fullyQualifiedTypeName name="com.phidgets.event.AttachListener"/>
 <fullyQualifiedTypeName name="com.phidgets.event.SpatialDataListener"/>
-<fullyQualifiedTypeName name="com.phidgets.SpatialPhidget"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Compressor"/>
+<fullyQualifiedTypeName name="com.phidgets.SpatialPhidget"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.sensors.SpatialPhidgetGyro"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
+<fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PIDController"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.Robot"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PIDSourceType"/>
+<fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PIDOutput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.pid.PIDMultiOutput"/>
 </qualifiedTypeNameHistroy>

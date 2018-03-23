@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveTines extends Command {
-	private double timeToMove = 2.1, startTime;
+	private double timeToMove = 3, startTime;
 	private final boolean down;
 	private Timer frcTimer;
 	
@@ -20,9 +20,9 @@ public class MoveTines extends Command {
 		frcTimer.start();
 		startTime = Timer.getFPGATimestamp();
 		if (down)
-			Robot.LiftSubsystem.setPivot(0.25);
+			Robot.LiftSubsystem.setPivot(0.75);
 		else if (!down)
-			Robot.LiftSubsystem.setPivot(-0.25);
+			Robot.LiftSubsystem.setPivot(-0.75);
 	}
 	
 	@Override
