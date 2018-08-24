@@ -17,7 +17,7 @@ public class MiddleAutonomous extends CommandGroup {
 		// Turns the robot either left or right depending on what the game data is
 		// First value is for left
 		// Second value is for right
-		addSequential(new TurnFor(() -> Direction.fromChar(Robot.gameData.charAt(0)), (dir) -> dir == Direction.LEFT ? 45 : 55));
+		addSequential(new TurnFor(() -> Direction.fromChar(Robot.gameData.charAt(0)), (dir) -> dir == Direction.LEFT ? 50 : 55));
 		// Drives the robot forward to avoid the power cubes
 		addSequential(new DriveFor(() -> Direction.fromChar(Robot.gameData.charAt(0)), (dir) -> dir == Direction.LEFT ? 24 : 9, 0.5));
 //		addSequential(new DriveFor(9, 0.5, 0.87));
@@ -26,10 +26,13 @@ public class MiddleAutonomous extends CommandGroup {
 		// Second value is for left
 		addSequential(new TurnFor(() -> Direction.fromChar(Robot.gameData.charAt(0)).opposite(), (dir) -> dir == Direction.LEFT ? 61 : 58));
 		// Drives the robot forward until flush with the platform
+		addParallel(new MoveTines(false));//lowers tines
 		addSequential(new DriveUntil(30, 0.25));
 		// Wait timer
 		addSequential(new WaitTimer(0.5));
 		// Fires the piston launching the power cube
 		addSequential(new SolenoidShift(3));
+		addSequential(new WaitTimer(1.5));
+		addSequential(new SolenoidShift(4));
 	}
 }
