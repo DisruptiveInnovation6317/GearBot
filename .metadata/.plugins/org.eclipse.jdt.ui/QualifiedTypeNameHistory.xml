@@ -16,7 +16,6 @@
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.SpeedController"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.Victor"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.OI"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.RobotMap.Motors"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.DriverStation"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.command.Command"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.RobotMap.AnalogInputs"/>
@@ -56,8 +55,9 @@
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.smartdashboard.SmartDashboard"/>
 <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PIDController"/>
-<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.Robot"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PIDSourceType"/>
 <fullyQualifiedTypeName name="edu.wpi.first.wpilibj.PIDOutput"/>
 <fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.pid.PIDMultiOutput"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.Robot"/>
+<fullyQualifiedTypeName name="org.usfirst.frc.team6317.robot.RobotMap.Motors"/>
 </qualifiedTypeNameHistroy>

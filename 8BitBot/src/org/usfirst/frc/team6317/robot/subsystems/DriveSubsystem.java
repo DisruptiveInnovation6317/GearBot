@@ -55,6 +55,13 @@ public class DriveSubsystem extends Subsystem {
 		rightDriveTwo.set(rightSpeed);
 	}
 	
+	public void oneStickDrive(double y, double z) {
+		leftDriveOne.set(-z+(y*0.75));
+		leftDriveTwo.set(-z+(y*0.75));
+		rightDriveOne.set(z+y);
+		rightDriveTwo.set(z+y);
+	}
+	
 	/*/**
 	 * Sets the drive motors' speeds in inches per second using PID
 	 * @param leftIps left drive speed in inches per second
