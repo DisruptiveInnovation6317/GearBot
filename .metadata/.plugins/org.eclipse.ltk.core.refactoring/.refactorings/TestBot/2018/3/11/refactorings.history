@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;GyroTurnCommand.java&apos; to &apos;8BitBot/src/org.usfirst.frc.team6317.robot.commands&apos;&#x0D;&#x0A;- Original project: &apos;TestBot&apos;&#x0D;&#x0A;- Destination element: &apos;8BitBot/src/org.usfirst.frc.team6317.robot.commands&apos;&#x0D;&#x0A;- Original element: &apos;org.usfirst.frc.team6317.robot.commands.GyroTurnCommand.java&apos;" description="Copy compilation unit" destination="=8BitBot/src&lt;org.usfirst.frc.team6317.robot.commands" element1="/src&lt;org.usfirst.frc.team6317.robot.commands{GyroTurnCommand.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1521044532650" units="1" version="1.0"/>
+</session>

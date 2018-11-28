@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;org.usfirst.frc.team6317.robot.sensors&apos; to &apos;8BitBot/src&apos;&#x0D;&#x0A;- Original project: &apos;8BitTest&apos;&#x0D;&#x0A;- Destination element: &apos;8BitBot/src&apos;&#x0D;&#x0A;- Original element: &apos;8BitTest/src/org.usfirst.frc.team6317.robot.sensors&apos;" description="Copy package" destination="=8BitBot/src" element1="/src&lt;org.usfirst.frc.team6317.robot.sensors" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1520983032338" version="1.0"/>
+</session>

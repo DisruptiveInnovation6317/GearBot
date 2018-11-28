@@ -1,0 +1,110 @@
+package org.usfirst.frc.team6317.robot.commands;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+import org.usfirst.frc.team6317.robot.Direction;
+import org.usfirst.frc.team6317.robot.Robot;
+
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class DriveFor extends Command{
+	
+	private final double speed, rightModifier, leftModifier;
+	private double inches;
+	private Supplier<Direction> directionSupplier;
+	private Function<Direction, Integer> inchesFunction;
+	private Direction direction;
+	
+	{
+		this.requires(Robot.DriveSubsystem);
+		this.requires(Robot.SensorSubsystem);
+	}
+	
+	//stand drive command without speed modifiers
+	public DriveFor(double inches) {
+		this(inches, 0.5, 1, 1);
+	}
+	
+	//changeable speed command
+	public DriveFor(double inches, double speed) {
+		this(inches, speed, 1, 1);
+	}
+	
+	//command with right motor speed modifier
+	public DriveFor(double inches, double speed, double rightModifier) {
+		this(inches, speed, 1, rightModifier);
+	}
+	
+	public DriveFor(Supplier<Direction> sideOfScale, Function<Direction, Integer> inches, double speed) {
+		this.directionSupplier = sideOfScale;
+		this.inchesFunction = inches;
+		this.speed = speed;
+		this.leftModifier = 1.0;
+		this.rightModifier = 1.0;
+	}
+	
+	public DriveFor(Supplier<Direction> sideOfScale, Function<Direction, Integer> inches, double speed, double leftModifier, double rightModifier) {
+		this.directionSupplier = sideOfScale;
+		this.inchesFunction = inches;
+		this.speed = speed;
+		this.leftModifier = leftModifier;
+		this.rightModifier = rightModifier;
+	}
+	
+	//command with left motor speed modifier
+	public DriveFor(double inches, double speed, double leftModifier, double rightModifier) {
+		//0.87 modifier is almsot straight
+		this.speed = speed;
+		this.inches = inches;
+		this.rightModifier = rightModifier;
+		this.leftModifier = leftModifier;
+	}
+	
+	@Override
+	protected void execute() {
+		double left = Robot.SensorSubsystem.leftEncoder.getDistance();
+		double right = Robot.SensorSubsystem.rightEncoder.getDistance();
+		SmartDashboard.putNumber("Left Encoder", left);
+		SmartDashboard.putNumber("Right Encoder", right);
+		if (left > right) {
+			double difference = right / left;
+			Robot.DriveSubsystem.backDrive(this.speed * difference, this.speed);
+		} else if (right > left) {
+			double difference = left / right;
+			Robot.DriveSubsystem.backDrive(this.speed, this.speed * difference);
+		}
+	}
+	
+	@Override
+	protected void initialize() {
+		//sets encoders to 0 when starts
+		Robot.SensorSubsystem.resetEncoders();
+		
+		if (this.directionSupplier != null)
+			this.direction = this.directionSupplier.get();
+		
+		if (this.inchesFunction != null)
+			this.inches = this.inchesFunction.apply(this.direction);
+		
+		if (!isFinished()) //runs until its finished
+			Robot.DriveSubsystem.backDrive(this.speed * this.leftModifier, this.speed * this.rightModifier);
+	}
+	
+
+	@Override
+	protected boolean isFinished() {
+		Encoder leftEnc = Robot.SensorSubsystem.leftEncoder;
+		Encoder rightEnc = Robot.SensorSubsystem.rightEncoder;
+		//returns whether the encoders are above the inches specified
+		return Robot.SensorSubsystem.encoderDistanceDone(leftEnc, this.inches) ||
+				Robot.SensorSubsystem.encoderDistanceDone(rightEnc, this.inches);
+	}
+	
+	@Override
+	protected void end() {
+		Robot.DriveSubsystem.stop();
+	}
+}
