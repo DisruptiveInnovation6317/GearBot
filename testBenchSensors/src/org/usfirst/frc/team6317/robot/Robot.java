@@ -117,8 +117,8 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		//opens arm at begging of teleop
-		isOpen = true;
-		Shifter.openArm();
+//		isOpen = true;
+//		Shifter.openArm();
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}

@@ -12,10 +12,6 @@ public class Grabber extends Command {
 	
 	@Override
 	protected void initialize() {
-		if (Robot.isOpen)
-			Robot.Shifter.closeArm();
-		if (!Robot.isOpen)
-			Robot.Shifter.openArm();
 	}
 	
 	

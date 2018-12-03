@@ -15,16 +15,16 @@ public class OI {
 	public static Joystick rightStick = new Joystick(1);
 	public static Joystick controlStick = new Joystick(2);
 	Button controlTrigger = new JoystickButton(controlStick, 1);
-	Button botRight = new JoystickButton(controlStick, 4);
+	Button botRight = new JoystickButton(leftStick, 4);
 	Button botLeft = new JoystickButton(controlStick, 3);
-	Button topLeft = new JoystickButton(controlStick, 5);
-	Button topRight = new JoystickButton(controlStick, 6);
+	Button topLeft = new JoystickButton(leftStick, 5);
+	Button topRight = new JoystickButton(leftStick, 6);
 	
 	public OI() {
 		topRight.whenPressed(new SolenoidShift(0));
 		botRight.whenPressed(new SolenoidShift(1));
-		topLeft.whenPressed(new SolenoidShift(3));
-		botLeft.whenPressed(new SolenoidShift(4));
+//		topLeft.whenPressed(new SolenoidShift(3));
+//		botLeft.whenPressed(new SolenoidShift(4));
 		controlTrigger.whenPressed(new Grabber());
 	}
 }
