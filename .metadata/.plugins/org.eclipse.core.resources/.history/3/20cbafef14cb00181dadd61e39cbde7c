@@ -1,0 +1,61 @@
+package org.usfirst.frc.team6317.robot.subsystems;
+
+import org.usfirst.frc.team6317.robot.RobotMap;
+import org.usfirst.frc.team6317.robot.commands.DefaultDriveCommand;
+
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
+public class DriveSubsystem extends Subsystem {
+	//initalze speed controllers for motors
+	public SpeedController leftFront = new Victor(RobotMap.Motors.LEFT_FRONT);
+	public SpeedController leftBack = new Victor(RobotMap.Motors.LEFT_BACK);
+	public SpeedController rightFront = new Victor(RobotMap.Motors.RIGHT_FRONT);
+	public SpeedController rightBack = new Victor(RobotMap.Motors.RIGHT_BACK);
+	public static double speedMultiplier = 0;
+	
+	{
+		//inverts left side
+		leftFront.setInverted(true);
+		leftBack.setInverted(true);
+	}
+	
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new DefaultDriveCommand());
+	}
+	//forward auto command with modifier
+	public void drive(double leftSpeed, double rightSpeed) {
+		leftFront.set(leftSpeed);
+		leftBack.set(leftSpeed);
+		rightFront.set(rightSpeed);
+		rightBack.set(rightSpeed);
+	}
+	
+	public void drive(double y, double x, double z, double throttle) {
+		z *= 0.75;
+		
+//		if (Math.abs(z) < 0.3) {
+//			z = 0;
+//		} 
+		//2 down, 4 up
+		
+		double multiplier = ((Math.abs(x)) > Math.abs(y) ? Math.abs(x) : Math.abs(y));
+		
+		multiplier = multiplier * throttle;
+		
+		leftFront.set(clip(-z + y - x) * multiplier);
+		leftBack.set(clip(-z + y + x) * multiplier);
+		rightBack.set(clip(z + y - x) * multiplier);
+		rightFront.set(clip(z + y + x) * multiplier);
+	}
+	
+	private double clip (double speed) {
+		return (speed > 1 ? 1 : speed < -1 ? -1 : speed);
+	}
+	
+	public void stop() {
+		drive(0, 0, 0);
+	}
+}

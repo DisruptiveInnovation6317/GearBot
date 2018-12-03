@@ -1,0 +1,69 @@
+package org.usfirst.frc.team6317.robot.subsystems;
+
+import org.usfirst.frc.team6317.robot.RobotMap;
+import org.usfirst.frc.team6317.robot.commands.DefaultDriveCommand;
+
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
+public class DriveSubsystem extends Subsystem {
+	//initalze speed controllers for motors
+	public SpeedController leftFront = new Victor(RobotMap.Motors.LEFT_FRONT);
+	public SpeedController leftBack = new Victor(RobotMap.Motors.LEFT_BACK);
+	public SpeedController rightFront = new Victor(RobotMap.Motors.RIGHT_FRONT);
+	public SpeedController rightBack = new Victor(RobotMap.Motors.RIGHT_BACK);
+	
+	{
+		//inverts left side
+		leftFront.setInverted(true);
+		leftBack.setInverted(true);
+	}
+	
+	@Override
+	protected void initDefaultCommand() {
+		setDefaultCommand(new DefaultDriveCommand());
+	}
+	//forward auto command with modifier
+	public void drive(double leftSpeed, double rightSpeed) {
+		leftFront.set(leftSpeed);
+		leftBack.set(leftSpeed);
+		rightFront.set(rightSpeed);
+		rightBack.set(rightSpeed);
+	}
+	
+	public void drive(double y, double x, double z) {
+		if (Math.abs(z) > 0.1) {
+			drive(-z,z);
+		} else {
+			leftFront.set(y - x);
+			leftBack.set(y + x);
+			rightBack.set(y - x);
+			rightFront.set(y + x);
+//		}
+	}
+	
+//	public void backDrive(double leftSpeed, double rightSpeed, double rightModifier) {
+//		leftDriveOne.set(leftSpeed);
+//		leftDriveTwo.set(leftSpeed);
+//		rightDriveOne.set(rightSpeed * rightModifier);
+//		rightDriveTwo.set(rightSpeed * rightModifier);
+//	}
+	
+	//base command
+	public void backDrive(double leftSpeed, double rightSpeed) {
+//		leftDriveOne.set(leftSpeed);
+//		leftDriveTwo.set(leftSpeed);
+//		rightDriveOne.set(rightSpeed);
+//		rightDriveTwo.set(rightSpeed);
+	}
+	
+	//drive command
+	public void drive(double speed) {
+		drive(speed, speed);
+	}
+	
+	public void stop() {
+		drive(0);
+	}
+}

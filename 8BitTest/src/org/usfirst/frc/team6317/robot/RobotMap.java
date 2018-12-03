@@ -13,8 +13,8 @@ public final class RobotMap {
 		public static final int RIGHT_DRIVE_TWO = 3;
 		public static final int LEFT_DRIVE_ONE = 0;
 		public static final int LEFT_DRIVE_TWO = 1;
-		public static final int PIVOT_ARM_MOTOR = 4;
-		public static final int LIFT_MOTOR = 5;
+		public static final int PIVOT_ARM_MOTOR = 5;
+		public static final int LIFT_MOTOR = 4;
 	}
 	
 	public static final class AnalogInputs {

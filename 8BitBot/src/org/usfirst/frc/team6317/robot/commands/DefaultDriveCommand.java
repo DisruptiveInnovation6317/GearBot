@@ -13,7 +13,8 @@ public class DefaultDriveCommand extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.DriveSubsystem.drive(OI.leftStick.getY(), OI.rightStick.getY());
+		Robot.DriveSubsystem.oneStickDrive(OI.leftStick.getY(), OI.leftStick.getX());
+//		Robot.DriveSubsystem.drive(OI.leftStick.getY(), OI.rightStick.getY());
 	}
 
 	@Override
