@@ -15,16 +15,20 @@ public class SolenoidShift extends Command {
 	@Override
 	protected void initialize() {
 		//depending on input, pops or lowers piston and closes / opens clamps
-		if(state == 0)
-			Robot.Shifter.openArm();		
-		if(state == 1)
-			Robot.Shifter.closeArm();
-		if (state == 3)
-			Robot.Shifter.firePiston();
-		if (state == 4)
-			Robot.Shifter.lowerPiston();
-		if (state == 5)
-			Robot.Shifter.firePiston();
+		if (state == 0)
+			Robot.Shifter.shiftHigh();
+		if (state == 1)
+			Robot.Shifter.shiftLow();
+//		if(state == 0)
+//			Robot.Shifter.openArm();		
+//		if(state == 1)
+//			Robot.Shifter.closeArm();
+//		if (state == 3)
+//			Robot.Shifter.firePiston();
+//		if (state == 4)
+//			Robot.Shifter.lowerPiston();
+//		if (state == 5)
+//			Robot.Shifter.firePiston();
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 		//starts OI
 		oi = new OI();
 		
-		//CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 		
 		//makes the sendable chooser
 		autoChooser = new SendableChooser();
@@ -118,7 +118,6 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		//opens arm at begging of teleop
 		isOpen = true;
-		Shifter.openArm();
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 	}
